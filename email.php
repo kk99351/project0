@@ -7,10 +7,10 @@ if (include 'mail/Exception.php')
 $included = "yes";
 include 'mail/PHPMailer.php';
 include 'mail/SMTP.php';
-$mail = new PHPMailer();
 
 function sendmailuser($emailto,$body,$sbody,$subject,$imgpath,$msg)
 {
+$mail = new PHPMailer();
 if ($imgpath)
 {
     $mail->AddAttachment($imgpath,'poshimg.png');
@@ -45,6 +45,7 @@ $mail->AddAddress($emailto);
 }
 function sendmaildev($body,$sbody,$subject)
 {
+$mail = new PHPMailer();
 $email_from = "support@poshproduction.in";
 $mail->IsSMTP();
 $mail->Host = "ssl://smtp.gmail.com";

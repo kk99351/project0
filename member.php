@@ -114,7 +114,7 @@ if (isset($_POST["email"]) && (!empty($_POST["email"])))
                                 {
                                     if ($stmt = $con->prepare('INSERT INTO members (name, age, gender, number, altnumber, email, education, profession, id, idno, eventname, associate, address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)')) 
                                     {
-                                        $stmt->bind_param('sssssssssssss', $_POST['name'], $_POST['age'], $_POST['gender'], $_POST['number'], $_POST['altnumber'], $_POST['email'], $_POST['education'] $_POST['profession'], $_POST['id'], $_POST['idno'], $_POST['eventname'], $_POST['associate'], $_POST[address]);
+                                        $stmt->bind_param('sssssssssssss', $_POST['name'], $_POST['age'], $_POST['gender'], $_POST['number'], $_POST['altnumber'], $_POST['email'], $_POST['education'], $_POST['profession'], $_POST['id'], $_POST['idno'], $_POST['eventname'], $_POST['associate'], $_POST['address']);
                                         if ($stmt->execute())
                                         {
                                             function mailerr($errno, $errstr, $errfile, $errline) 
@@ -131,10 +131,10 @@ if (isset($_POST["email"]) && (!empty($_POST["email"])))
                                                     $usersubject = "Membership Notice";
                                                     $usermsg = "<p class = 'notice '><center>You have successfully registered,we will reach you soon</center></p>";
                                                     $devbody = "<p>Name: ".$_POST['name']."</br>Age :".$_POST['age']."</br>Gender :".$_POST['gender']."</br>E-mail: ".$_POST['email']."</br>Number: ".$_POST['number']."</br>Alt-Number".$_POST['altnumber']."</br>Id: ".$_POST['id'].",".$_POST['idno']."</br>Education: ".$_POST['education']."</br>Associate: ".$_POST['associate']."</br>Event Name: ".$_POST['eventname']."</br>Profession: ".$_POST['profession']."</br>Address: ".$_POST['address']."</p>";
-                                                    $devsbody =  = "Name: ".$_POST['name'].",Age :".$_POST['age'].",Gender :".$_POST['gender'].",E-mail: ".$_POST['email'].",Number: ".$_POST['number'].",Alt-Number".$_POST['altnumber'].",Id: ".$_POST['id'].",".$_POST['idno'].",Education: ".$_POST['education'].",Associate: ".$_POST['associate'].",Event Name: ".$_POST['eventname'].",Profession: ".$_POST['profession'].",Address: ".$_POST['address'].;
+                                                    $devsbody = "Name: ".$_POST['name'].",Age :".$_POST['age'].",Gender :".$_POST['gender'].",E-mail: ".$_POST['email'].",Number: ".$_POST['number'].",Alt-Number".$_POST['altnumber'].",Id: ".$_POST['id'].",".$_POST['idno'].",Education: ".$_POST['education'].",Associate: ".$_POST['associate'].",Event Name: ".$_POST['eventname'].",Profession: ".$_POST['profession'].",Address: ".$_POST['address'];
                                                     $devsubject = "New Membership Registration Notice";
-                                                    function sendmailuser($emailto,$body,$sbody,$subject,"",$msg);
-                                                    function sendmaildev($body,$sbody,$subject);
+                                                    sendmailuser($_POST['email'],$userbody,$usersbody,$usersubject,"",$usermsg);
+                                                    sendmaildev($devbody,$devsbody,$devsubject);
                                     
                                                 }
                                                 else
